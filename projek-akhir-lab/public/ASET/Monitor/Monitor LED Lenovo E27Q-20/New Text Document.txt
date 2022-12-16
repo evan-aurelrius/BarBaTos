@@ -1,0 +1,36 @@
+Rp3.559.900
+
+Brand Type : Lenovo ThinkVision E27Q-20
+Panel Size(Inch) : 27"
+Panel Type : IPS Flat
+Panel Resolution : 2560 x 1440
+Aspect Ratio : 16:9 Wide
+Brightness (cd/㎡) : 350
+
+Refresh Rate(hz) : 75
+Response Time (ms) : 4
+Sync : No
+Connectivity : HDMI 1.4 x1 + DP 1.2 x1
+Speaker : Yes
+
+Audio port :1x 3.5mm Audio Out
+VESA mounting (mm) : 100x100
+Ergonomic Stand : Yes
+
+Panel bit : 8 bit
+HDR : No
+NTSC (%) : -
+SRGB (%) : 99
+Adobe RGB (%) : -
+DCI-P3 (%) : -
+
+Power Cons (watt) : 30
+Product Weight (nw/kg) : 6.6
+Box Dimension (cm) :18 x 46.5 x 73
+Volume Weight (kg) : 11
+
+Include :
+Power Cable
+HDMI Cable
+
+Garansi & Service Centre dapat dilihat di Catatan Toko.

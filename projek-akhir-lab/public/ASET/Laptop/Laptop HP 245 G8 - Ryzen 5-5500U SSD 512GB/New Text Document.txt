@@ -1,0 +1,39 @@
+Rp8.033.000
+
+HP 245 G8 Notebook PC
+
+• Prosesor : AMD Ryzen™ 5 5500U (up to 4.0 GHz max boost clock, 8 MB L3 cache, 6 cores, 12 threads)
+• Operating System : Windows 11 Home Single Language
+• RAM : 8 GB / 16 GB DDR4-3200 MHz
+• Storage : 512 GB PCIe® NVMe™ SSD
+• Display : 14" diagonal, HD (1366 x 768), narrow bezel, anti-glare, 250 nits, 45% NTSC
+• Graphics : AMD Radeon™ Graphics
+
+• Ports :
+2 Super Speed USB Type-A 5Gbps signaling rate;
+1 SuperSpeed USB Type-C® 5Gbps signaling rate;
+1 RJ-45;
+1 headphone/microphone combo;
+1 HDMI 1.4b;
+1 AC power
+
+• Expansion Slots Note : Supports SD, SDHC, SDXC.
+• Audio Features : Stereo speakers, integrated digital microphone
+• Camera : 720p HD camera
+• Keyboard : Full-size island-style, spill and pick resistant keyboard
+• Wireless : Realtek 802.11a/b/g/n/ac (2x2) Wi-Fi® and Bluetooth® 5 combo
+• Battery : HP Long Life 3-cell, 41 Wh Li-ion
+• Dimensions Without Stand (W X D X H) : 32.4 x 22.59 x 1.99 cm
+• Weight : 1.47 kg
+• Security Management : TPM 2.0; Hardware TPM
+
+• Software Included :
+HP Support Assistant;
+Native Miracast support;
+HP Audio Switch;
+HP Documentation;
+HP Setup Integrated OOBE;
+HP SSRM;
+HP JumpStarts;
+
+Garansi Resmi HP Indonesia 1 Tahun

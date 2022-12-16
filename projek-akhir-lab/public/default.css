@@ -1,0 +1,66 @@
+@font-face {
+    font-family: primary;
+    src: url('./FONT/Lobster-Regular.ttf');
+}
+@font-face {
+    font-family: secondary;
+    src: url('./FONT/Poppins-Medium.ttf');
+}
+
+:root{
+    --satu : rgb(43, 45, 66);
+    --dua : rgb(141, 153, 174);
+    --tiga : rgb(237, 242, 244);
+    --empat : rgb(239, 35, 60);
+    --lima : rgb(216, 0, 50);
+    --enam : rgb(220, 220, 220);
+}
+.text-satu{color: var(--satu);}     .bg-satu{background-color: var(--satu);}
+.text-dua{color: var(--dua)}        .bg-dua{background-color: var(--dua)}
+.text-tiga{color: var(--tiga)}      .bg-tiga{background-color: var(--tiga)}
+.text-empat{color: var(--empat)}    .bg-empat{background-color: var(--empat)}
+.text-lima{color: var(--lima)}      .bg-lima{background-color: var(--lima)}
+.text-enam{color: var(--enam)}      .bg-enam{background-color: var(--enam)}
+
+.boxShadow{
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+}
+
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: content-box;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    outline: none;
+    font-family: secondary;
+}
+
+/* remove arrow in input number  */
+/* start */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        appearance: none;
+        margin: 0;
+    }
+    input[type=number] {
+        -moz-appearance: textfield;
+        -webkit-appearance: textfield;
+        appearance: textfield;
+    }
+/* end */
+
+input, select, button{
+    border: none;
+}
+
+a{
+    text-decoration: none !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
