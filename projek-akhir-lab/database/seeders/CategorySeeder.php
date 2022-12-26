@@ -15,7 +15,7 @@ class CategorySeeder extends Seeder
     public function run()
     {
         DB::table('categories')->insert([
-            'name' => "Face Mask"
+            'name' => "Laptop"
         ]);
         DB::table('categories')->insert([
             'name' => "Smart Watch"
@@ -24,10 +24,10 @@ class CategorySeeder extends Seeder
             'name' => "Headset"
         ]);
         DB::table('categories')->insert([
-            'name' => "Keyboard"
+            'name' => "Face Mask"
         ]);
         DB::table('categories')->insert([
-            'name' => "Laptop"
+            'name' => "Keyboard"
         ]);
         DB::table('categories')->insert([
             'name' => "Monitor"

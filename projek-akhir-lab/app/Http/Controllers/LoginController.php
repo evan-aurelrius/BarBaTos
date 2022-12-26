@@ -21,13 +21,12 @@ class loginController extends Controller
         ]);
 
         if($req->rememberMe){
-            Cookie::queue('email', $req['email'], 2);
-            Cookie::queue('password', $req['password'], 2);
+            Cookie::queue('email', $req['email'], 120);
+            Cookie::queue('password', $req['password'], 120);
         }
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, true)) {
             $req->session()->regenerate();
-            
             return redirect()->intended('/');
         }
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\EditController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DetailController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
@@ -34,11 +35,14 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['UserOnly'])->group(function () {
         Route::get('/cart',[CartController::class, 'goToCart']);
-        Route::delete('/cart/purchase',[CartController::class, 'purchase']);
         Route::post('/cart/addCart',[CartController::class, 'addCart']);
         Route::delete('/cart/deleteCart',[CartController::class, 'deleteCart']);
         Route::patch('/cart/minusCart',[CartController::class, 'minusCart']);
         Route::patch('/cart/plusCart',[CartController::class, 'plusCart']);
+
+        Route::delete('/cart/purchase',[HistoryController::class, 'purchase']);
+
+        Route::get('/history',[HistoryController::class,'goToHistory']);
     });
 
     Route::middleware(['AdminOnly'])->group(function () {

@@ -28,8 +28,16 @@ class ProfileController extends Controller
     }
 
     public function editAccount(Request $req){
-        User::where('id', $req->id)
-        -> update([
+        $req = $req->validate([
+            "name" => 'required|min:5|regex:/[a-zA-Z\s]+$/',
+            "email" => 'required|email|unique:users,email',
+            "password" => 'required|min:8',
+            "gender" => 'required',
+            "dateOfBirth" => 'required|before',
+            "country" => 'required',
+        ]);
+
+        User::where('id', $req->id)-> update([
             "name" => $req->name,
             "email" => $req->email,
             "password" => $req->password,

@@ -22,35 +22,16 @@ class HomeController extends Controller
     }
 
     public function goToViewAll($category_id){
-        $Products = Product::where('category_id',$category_id)->get();
-        $Category = Category::where('id',$category_id)->first();
         return view('viewAll', [
             "title" => "Home",
-            "Products" => $Products,
-            "Category" => $Category
+            "Products" => Product::where('category_id',$category_id)->paginate(10),
         ]);
     }
 
     public function search(Request $req){
         return view('search', [
             "title" => "Home",
-            'Products' => Product::where('name', 'like', '%' . $req->search . '%')->paginate(20)
+            'Products' => Product::where('name', 'like', '%' . $req->search . '%')->paginate(10)
         ]);
     }
-
-    // public function createProduct(Request $req){
-    //     $img = $req->file('photo');
-    //     $imgName = $img->getClientOriginalName();
-    //     Storage::putFileAs('public/images', $img, $imgName);
-    //     $imgPath = 'images/'.$imgName;
-
-    //     DB::table('products')->insert([
-    //         "name" => $req->name,
-    //         "category" => $req->category,
-    //         "description" => $req->description,
-    //         "price" => $req->price,
-    //         "photo" => $imgPath,
-    //     ]);
-    //     return redirect('/edit');
-    // }
 }

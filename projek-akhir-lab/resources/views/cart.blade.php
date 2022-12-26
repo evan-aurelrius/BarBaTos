@@ -2,7 +2,7 @@
 
 @section('main')
     <main class="container d-flex flex-column align-items-center justify-content-center">
-        <div class="mx-auto mt-5 text-center">
+        <div class="mx-auto mb-5 mt-1 text-center">
             @forelse ($carts as $cart)
                 <div class="card mb-3" style="max-width: 1000px;">
                     <div class="row g-0">
@@ -24,7 +24,7 @@
                                             <h5 class="m-0">-</h5>
                                         </button>
                                     </form>
-                                    <h5 class="m-0">{{ $cart->quantity }}</h5>
+                                    <h5 class="my-auto">{{ $cart->quantity }}</h5>
                                     <form action="{{asset('cart/plusCart')}}" method="post">
                                         @method('patch')
                                         @csrf

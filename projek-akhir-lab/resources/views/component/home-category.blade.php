@@ -7,7 +7,9 @@
     </div>
     <div class="products bg-abu d-flex w-100 gap-2 py-2 px-3 align-item-center rounded-bottom">
         @foreach ($category->Product as $product)
-            @include('component.home-card')
+            <div class="card-home-wrapper boxShadow rounded p-2 d-flex flex-column bg-dua">
+                @include('component.home-card')
+            </div>
         @endforeach
     </div>
 </div>

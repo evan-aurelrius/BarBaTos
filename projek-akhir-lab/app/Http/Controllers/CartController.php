@@ -52,9 +52,4 @@ class CartController extends Controller
         return redirect('/cart');
     }
 
-    public function purchase(){
-        Cart::where('user_id',auth()->user()->id)->delete();
-        return redirect('/cart');
-    }
-
 }

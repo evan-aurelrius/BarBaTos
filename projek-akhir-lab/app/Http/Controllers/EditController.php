@@ -15,7 +15,7 @@ class EditController extends Controller
         return view('edit', [
             "title" => "Edit",
             "options" => Category::get(),
-            "products" => Product::get(),
+            "products" => Product::get()->reverse(),
         ]);
     }
 
@@ -23,6 +23,7 @@ class EditController extends Controller
         $img = $req->file('photo');
         $imgName = $img->getClientOriginalName();
         Storage::putFileAs('public/images', $img, $imgName);
+
 
         Product::insert([
             "name" => $req->name,

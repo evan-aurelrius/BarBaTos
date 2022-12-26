@@ -19,12 +19,12 @@ class registerController extends Controller
 
     public function createAccount(Request $req){
         $req = $req->validate([
-            "name" => 'required|min:3|regex:/[a-zA-Z\s]+$/',
+            "name" => 'required|min:5|regex:/[a-zA-Z\s]+$/',
             "email" => 'required|email|unique:users,email',
             "password" => 'required|min:8',
             "confirm-password" => 'same:password',
             "gender" => 'required',
-            "dateOfBirth" => 'required',
+            "dateOfBirth" => 'required|before',
             "country" => 'required',
         ]);
 

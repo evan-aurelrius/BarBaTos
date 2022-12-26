@@ -8,25 +8,25 @@
                 @auth
                     @if(Auth()->user()->role == 'user')
                         @if($product->Cart)
-                            <h5 class="bg-satu rounded px-4 py-2 text-light d-flex">
+                            <div class="bg-satu rounded p-1 mb-2 text-light d-flex">
                                 <form action="{{asset('cart/minusCart')}}" method="post">
                                     @method('patch')
                                     @csrf
                                     <input type="hidden" name="product_id" value={{ $product->id }}>
-                                    <button class="bg-satu text-light" type="submit">
-                                        -
+                                    <button class="bg-dua rounded px-2 py-1 text-light" type="submit">
+                                        <h2 class="m-0">-</h2>
                                     </button>
                                 </form>
-                                {{ $product->Cart->quantity }}
+                                <h3 class="mx-3 my-auto">{{ $product->Cart->quantity }}</h3>
                                 <form action="{{asset('cart/plusCart')}}" method="post">
                                     @method('patch')
                                     @csrf
                                     <input type="hidden" name="product_id" value={{ $product->id }}>
-                                    <button class="bg-satu text-light" type="submit">
-                                        -
+                                    <button class="bg-dua rounded px-2 py-1 text-light" type="submit">
+                                        <h2 class="m-0">+</h2>
                                     </button>
                                 </form>
-                            </h5>
+                            </div>
                         @else
                             <form method="POST" action="/cart/addCart">
                                 @csrf

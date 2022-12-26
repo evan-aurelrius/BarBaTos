@@ -18,20 +18,30 @@ class UserSeeder extends Seeder
         User::insert([
             'role' => 'admin',
             'name' => 'Nelsen Anggara',
-            'email' => 'nelsen12anggara@gmail.com',
-            'password' => hash::make('qweqweqwe'),
+            'email' => 'nelsen.anggara@binus.ac.id',
+            'password' => hash::make('adminnelsen'),
             'gender' => 'male',
-            'dateOfBirth' => 12121212,
+            'dateOfBirth' => 20020512,
             'country' => 'jakarta'
         ]);
 
         User::insert([
             'role' => 'user',
-            'name' => 'vivi',
-            'email' => 'nelsen.anggara@binus.ac.id',
-            'password' => hash::make('qweqweqwe'),
+            'name' => 'user0001',
+            'email' => 'user0001@gmail.com',
+            'password' => hash::make('user0001'),
             'gender' => 'female',
-            'dateOfBirth' => 15121222,
+            'dateOfBirth' => 20021212,
+            'country' => 'jakarta'
+        ]);
+
+        User::insert([
+            'role' => 'user',
+            'name' => 'user0002',
+            'email' => 'user0002@gmail.com',
+            'password' => hash::make('user0002'),
+            'gender' => 'male',
+            'dateOfBirth' => 20020103,
             'country' => 'jakarta'
         ]);
     }

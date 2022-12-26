@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="../default.css">
+    <link rel="icon" type="image/x-icon" href="./favicon.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Barbatos Shop | {{ $title }}</title>
   </head>
@@ -60,6 +61,9 @@
                 @if (Auth()->user()->role == 'user')
                     <a href="/cart" class="d-flex ms-3">
                         <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Cart" ? "bg-lima" : "" }}" name="cart"></ion-icon>
+                    </a>
+                    <a href="/history" class="d-flex ms-3">
+                        <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "History" ? "bg-lima" : "" }}" name="receipt"></ion-icon>
                     </a>
                 @endif
 
