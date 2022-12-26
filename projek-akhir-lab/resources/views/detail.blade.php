@@ -6,14 +6,48 @@
             <div class="img-wrapper rounded d-flex flex-column h-100 justify-content-start align-items-center gap-2 bg-dua">
                 <img class="boxShadow" src="{{ url('./storage/images/'.$product->photo) }}" alt="a">
                 @auth
-                    <form method="POST" action="">
-                        @csrf
-                        <input type="hidden" name="id" value={{ $product->id }}>
-                        <button type="submit" class="d-flex flex-column align-items-center justify-content-center rounded boxShadow my-3 bg-satu text-light px-2 py-1">
-                            Add to cart
-                            <ion-icon class="fs-1" name="cart"></ion-icon>
-                        </button>
-                    </form>
+                    @if(Auth()->user()->role == 'user')
+                        @if($product->Cart)
+                            <h5 class="bg-satu rounded px-4 py-2 text-light d-flex">
+                                <form action="{{asset('cart/minusCart')}}" method="post">
+                                    @method('patch')
+                                    @csrf
+                                    <input type="hidden" name="product_id" value={{ $product->id }}>
+                                    <button class="bg-satu text-light" type="submit">
+                                        -
+                                    </button>
+                                </form>
+                                {{ $product->Cart->quantity }}
+                                <form action="{{asset('cart/plusCart')}}" method="post">
+                                    @method('patch')
+                                    @csrf
+                                    <input type="hidden" name="product_id" value={{ $product->id }}>
+                                    <button class="bg-satu text-light" type="submit">
+                                        -
+                                    </button>
+                                </form>
+                            </h5>
+                        @else
+                            <form method="POST" action="/cart/addCart">
+                                @csrf
+                                <input type="hidden" name="quantity" value=1>
+                                <input type="hidden" name="product_id" value={{ $product->id }}>
+
+                                <button type="submit" class="d-flex flex-column align-items-center justify-content-center rounded boxShadow my-3 bg-satu text-light px-2 py-1">
+                                    Add to cart
+                                    <ion-icon class="fs-1" name="cart"></ion-icon>
+                                </button>
+                            </form>
+                        @endif
+                    @elseif (Auth()->user()->role == 'admin')
+                        <form class="boxShadow w-25 px-2 py-1 my-3 d-flex justify-content-center rounded bg-satu" action="/edit/editProduct" method="get">
+                            @csrf
+                            <input type="hidden" name="id" value={{$product->id}}>
+                            <button type="submit" class="bg-satu text-light d-flex align-items-center justify-content-center gap-2" >
+                                Edit<ion-icon name="create"></ion-icon>
+                            </button>
+                        </form>
+                    @endif
                 @endauth
             </div>
 

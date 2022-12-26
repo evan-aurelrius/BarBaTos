@@ -22,11 +22,13 @@
                 <ion-icon name="close-circle"></ion-icon>
             </button>
         </form>
-        a:hre
-        <button class="boxShadow w-25 px-2 py-1 d-flex align-items-center justify-content-center gap-2 rounded bg-satu text-light" type="submit">
-            Edit
-            <ion-icon name="create"></ion-icon>
-        </button>
+        <form class="boxShadow w-25 px-2 py-1 d-flex justify-content-center rounded bg-satu" action="/edit/editProduct" method="get">
+            @csrf
+            <input type="hidden" name="id" value={{$product->id}}>
+            <button type="submit" class="bg-satu text-light d-flex align-items-center justify-content-center gap-2" >
+                Edit<ion-icon name="create"></ion-icon>
+            </button>
+        </form>
     </div>
 </div>
 

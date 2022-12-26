@@ -10,9 +10,6 @@
         <a href="detail/{{ $product->id }}">
             <button class="px-2 py-1 rounded boxShadow bg-satu text-tiga">Detail</button>
         </a>
-        <button class="px-2 py-1 rounded boxShadow bg-dua">
-            <ion-icon name="add-circle"></ion-icon>
-        </button>
     </div>
 </div>
 

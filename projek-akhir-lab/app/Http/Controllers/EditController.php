@@ -22,7 +22,7 @@ class EditController extends Controller
     public function createProduct(Request $req){
         $img = $req->file('photo');
         $imgName = $img->getClientOriginalName();
-        Storage::putFileAs('images', $img, $imgName);
+        Storage::putFileAs('public/images', $img, $imgName);
 
         Product::insert([
             "name" => $req->name,
@@ -34,10 +34,24 @@ class EditController extends Controller
         return redirect('/edit');
     }
 
+    public function deleteProduct(Request $req){
+        Product::where('id',$req->id)->delete();
+
+        return redirect('/edit');
+    }
+
+    public function editProduct(Request $req){
+        return view('editProduct', [
+            "title" => "Edit",
+            "options" => Category::get(),
+            "product" => Product::where('id',$req->id)->first(),
+        ]);
+    }
+
     public function updateProduct(Request $req){
         $img = $req->file('photo');
         $imgName = $img->getClientOriginalName();
-        Storage::putFileAs('images', $img, $imgName);
+        Storage::putFileAs('public/images', $img, $imgName);
 
         Product::where("id", $req -> id)
         -> update([
@@ -47,12 +61,6 @@ class EditController extends Controller
             "price" => $req->price,
             "photo" => $imgName,
         ]);
-        return redirect('/');
-    }
-
-    public function deleteProduct(Request $req){
-        Product::where('id',$req->id)->delete();
-
         return redirect('/edit');
     }
 }

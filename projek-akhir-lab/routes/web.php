@@ -26,6 +26,7 @@ Route::get('/viewAll/{category_id}', [HomeController::class, 'goToViewAll']);
 
 Route::middleware(['auth'])->group(function () {
     Route::post('/logout', [ProfileController::class, 'loggingOut']);
+    Route::delete('/deleteAccount', [ProfileController::class, 'deleteAccount']);
     Route::get('/profile', [ProfileController::class, 'goToProfile']);
     Route::patch('/profile/edit', [ProfileController::class, 'editAccount']);
     Route::get('/detail/{id}', [DetailController::class, 'goToEdit']);
@@ -33,13 +34,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::middleware(['UserOnly'])->group(function () {
         Route::get('/cart',[CartController::class, 'goToCart']);
+        Route::delete('/cart/purchase',[CartController::class, 'purchase']);
+        Route::post('/cart/addCart',[CartController::class, 'addCart']);
+        Route::delete('/cart/deleteCart',[CartController::class, 'deleteCart']);
+        Route::patch('/cart/minusCart',[CartController::class, 'minusCart']);
+        Route::patch('/cart/plusCart',[CartController::class, 'plusCart']);
     });
 
     Route::middleware(['AdminOnly'])->group(function () {
         Route::get('/edit', [EditController::class, 'goToEdit']);
         Route::post('/edit/createProduct', [EditController::class, 'createProduct']);
         Route::delete('/edit/deleteProduct', [EditController::class, 'deleteProduct']);
-        Route::delete('/edit/editProduct', [EditController::class, 'editProduct']);
+        Route::get('/edit/editProduct', [EditController::class, 'editProduct']);
+        Route::patch('/edit/updateProduct', [EditController::class, 'updateProduct']);
     });
 });
 

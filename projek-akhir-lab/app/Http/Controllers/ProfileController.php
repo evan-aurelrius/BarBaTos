@@ -46,4 +46,9 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login');
     }
+
+    public function deleteAccount(Request $request){
+        User::where('id', $request->id)->delete();
+        return redirect('/register');
+    }
 }
