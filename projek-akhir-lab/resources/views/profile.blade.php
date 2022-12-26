@@ -2,7 +2,8 @@
 @section('main')
     <main class="container d-flex flex-column align-items-center justify-content-center mb-5">
         <div class="w-50 bg-tiga rounded boxShadow">
-            <form class="m-3" action="/register/createAccount" method="POST">
+            <form class="m-3" action="/profile/edit" method="POST">
+                @method('patch')
                 @csrf
                 <div class="d-flex flex-column rounded my-2">
                     <label for="name">Name</label>
@@ -26,7 +27,7 @@
                         <label for="female">Female</label>
                     </div>
                     <div>
-                        <input type="radio" value="1" name="gender" id="male" {{ auth()->user()->gender == 'female' ? 'checked' : '' }}>
+                        <input type="radio" value="1" name="gender" id="male" {{ auth()->user()->gender == 'male' ? 'checked' : '' }}>
                         <label for="male">Male</label>
                     </div>
                 </div>
@@ -43,16 +44,17 @@
                     </select>
                 </div>
                 <div class="d-flex justify-content-end mb-5 gap-3 mt-3">
-                    <form action="/logout" method="post">
-                        @csrf
-                        <button type="submit" class="w-50 boxShadow px-4 py-2 rounded text-light bg-empat">
-                            Log Out
-                        </button>
-                    </form>
+
                     <button type="submit" class="w-50 boxShadow px-4 py-2 rounded text-light bg-satu">
                         Save Edit
                     </button>
                 </div>
+            </form>
+            <form action="/logout" method="post">
+                @csrf
+                <button type="submit" class="w-50 boxShadow px-4 py-2 rounded text-light bg-empat">
+                    Log Out
+                </button>
             </form>
             <form action="">
                 <button type="submit" class="text-lima">

@@ -10,18 +10,18 @@
                 @csrf
                 <div class="d-flex flex-column rounded my-2">
                     <label for="email">Email</label>
-                    <input class="border-3 border-bottom px-2 py-1 rounded" type="email" name="email" id="email">
+                    <input class="border-3 border-bottom px-2 py-1 rounded" type="email" name="email" id="email" value={{Cookie::get('email') != null ? Cookie::get('email') : ""  }}>
                 </div>
                 <div class="d-flex flex-column rounded my-2">
                     <label for="password">Password</label>
                     <div class="d-flex align-items-center rounded bg-satu">
-                        <input class="w-100 border-3 border-bottom px-2 py-1 rounded " type="password" name="password" id="password">
+                        <input class="w-100 border-3 border-bottom px-2 py-1 rounded " type="password" name="password" id="password" value={{Cookie::get('password') != null ? Cookie::get('password') : "" }}>
                         <ion-icon onclick="passwordPrivacyHandler()" id="icon" class="fs-4 text-tiga rounded py-1 px-2" name="eye-off"></ion-icon>
                     </div>
                 </div>
                 <div class="d-flex align-items-center my-2">
-                    <input class="me-1" type="checkbox" name="remember-me" id="remember-me">
-                    <label for="remember-me">Remember Me</label>
+                    <input class="me-1" type="checkbox" name="rememberMe" id="rememberMe">
+                    <label for="rememberMe">Remember Me</label>
                 </div>
                 <div class="d-flex justify-content-end mt-3 mb-5">
                     <button type="submit" class="w-50 shadow px-4 py-2 rounded text-light bg-satu">

@@ -15,6 +15,24 @@
     nav h6 {
         font-family: primary;
     }
+    ::-webkit-scrollbar {
+        height: 10px;
+        width: 10px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: var(--dua);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--lima);
+        border-radius: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--empat);
+    }
   </style>
   <body>
     <nav class="px-5 py-2 d-flex justify-content-between align-items-center bg-satu position-sticky top-0 mb-3">
@@ -22,22 +40,39 @@
             <h1 class="{{ $title === "Home" ? "text-empat" : "text-light" }}">BarbatosShop</h1>
         </a>
         <div class="d-flex align-items-center bg-light p-1 rounded {{ $title === "Login" || $title === "Register" ? "d-none" : "w-100" }}">
-            <input class="w-100 border-0 px-2 py-1 rounded" type="search" name="search" id="search" placeholder="{{'Type here to search'. ($title === "Edit" ? " your product" : "") }}">
-            <ion-icon class="mx-1 fs-4 text-empat" name="search"></ion-icon>
+            <form class="d-flex w-100" action="/search" method="get">
+                @csrf
+                <input class="w-100 border-0 px-2 py-1 rounded" type="search" name="search" id="search" placeholder="{{'Type here to search'. ($title === "Edit" ? " your product" : "") }}">
+                <button type="submit">
+                    <ion-icon class="mx-1 fs-4 text-empat" name="search"></ion-icon>
+                </button>
+            </form>
         </div>
         <div class="d-flex align-items-center">
-            <a href="/cart" class="d-flex ms-3">
-                <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Cart" ? "bg-lima" : "" }}" name="cart"></ion-icon>
-            </a>
-            <a href="/edit" class="ms-3">
-                <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Edit" ? "bg-lima" : "" }}" name="create"></ion-icon>
-            </a>
-            <a href="/login" class="ms-3">
-                <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Login" || $title === "Register" ? "bg-lima" : "" }}" name="person"></ion-icon>
-            </a>
-            <a href="/profile" class="ms-3">
-                <h6 class="m-0 text-light rounded-circle fs-5 p-2 {{ $title === "Profile" ? "bg-lima" : "" }}">NA</h6>
-            </a>
+
+            @auth
+                @if(Auth()->user()->role == 'admin')
+                    <a href="/edit" class="ms-3">
+                        <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Edit" ? "bg-lima" : "" }}" name="create"></ion-icon>
+                    </a>
+                @endif
+
+                @if (Auth()->user()->role == 'user')
+                    <a href="/cart" class="d-flex ms-3">
+                        <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Cart" ? "bg-lima" : "" }}" name="cart"></ion-icon>
+                    </a>
+                @endif
+
+                <a href="/profile" class="ms-3">
+                    <h6 class="text-uppercase m-0 text-light rounded-circle fs-5 p-2 {{ $title === "Profile" ? "bg-lima" : "" }}">{{ Auth()->user()->name[0] . Auth()->user()->name[1] }}</h6>
+                </a>
+
+                @else
+                <a href="/login" class="ms-3">
+                    <ion-icon class="fs-4 p-2 text-light rounded-circle {{ $title === "Login" || $title === "Register" ? "bg-lima" : "" }}" name="person"></ion-icon>
+                </a>
+            @endauth
+
         </div>
     </nav>
 

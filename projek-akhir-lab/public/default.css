@@ -37,6 +37,12 @@
     font-family: secondary;
 }
 
+::-webkit-scrollbar-track{
+    width: 2px !important;
+}
+::-webkit-scrollbar-thumb{
+    width: 2px;
+}
 /* remove arrow in input number  */
 /* start */
     input::-webkit-outer-spin-button,

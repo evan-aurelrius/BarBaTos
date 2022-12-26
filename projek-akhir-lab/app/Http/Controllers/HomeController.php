@@ -22,12 +22,19 @@ class HomeController extends Controller
     }
 
     public function goToViewAll($category_id){
-        $Products = Product::where('category_id','=',$category_id)->get();
-        $Category = Category::where('id','=',$category_id)->first();
+        $Products = Product::where('category_id',$category_id)->get();
+        $Category = Category::where('id',$category_id)->first();
         return view('viewAll', [
             "title" => "Home",
             "Products" => $Products,
             "Category" => $Category
+        ]);
+    }
+
+    public function search(Request $req){
+        return view('search', [
+            "title" => "Home",
+            'Products' => Product::where('name', 'like', '%' . $req->search . '%')->paginate(20)
         ]);
     }
 

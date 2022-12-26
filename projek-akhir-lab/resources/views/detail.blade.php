@@ -1,19 +1,20 @@
 @extends("templates.navbar")
 
 @section('main')
-    <main class="container">
+    <main class="container mb-5">
         <div class="boxShadow rounded p-2 d-flex gap-4">
             <div class="img-wrapper rounded d-flex flex-column h-100 justify-content-start align-items-center gap-2 bg-dua">
-                <img class="boxShadow" src="{{ url('IMAGES/'.$product->photo) }}" alt="a">
-                {{-- kalau uda login --}}
-                <form method="POST" action="">
-                    @csrf
-                    <input type="hidden" name="id" value={{ $product->id }}>
-                    <button type="submit" class="d-flex flex-column align-items-center justify-content-center rounded boxShadow my-3 bg-satu text-light px-2 py-1">
-                        Add to cart
-                        <ion-icon class="fs-1" name="cart"></ion-icon>
-                    </button>
-                </form>
+                <img class="boxShadow" src="{{ url('./storage/images/'.$product->photo) }}" alt="a">
+                @auth
+                    <form method="POST" action="">
+                        @csrf
+                        <input type="hidden" name="id" value={{ $product->id }}>
+                        <button type="submit" class="d-flex flex-column align-items-center justify-content-center rounded boxShadow my-3 bg-satu text-light px-2 py-1">
+                            Add to cart
+                            <ion-icon class="fs-1" name="cart"></ion-icon>
+                        </button>
+                    </form>
+                @endauth
             </div>
 
             <div class="d-flex flex-column mt-3 me-2">

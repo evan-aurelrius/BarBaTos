@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class registerController extends Controller
 {
@@ -28,13 +29,23 @@ class registerController extends Controller
         ]);
 
         User::insert([
-            "name" => $req['name'],
+            'role' => 'user',
+            'name' => $req['name'],
             'email' => $req['email'],
             'password' => hash::make($req['password']),
             'gender' => $req['gender'],
             'dateOfBirth' => $req['dateOfBirth'],
             'country' => $req['country'],
         ]);
-        return redirect('/login');
+
+        if (Auth::attempt($credentials)) {
+            $req->session()->regenerate();
+
+            return redirect()->intended('/');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ]);
     }
 }

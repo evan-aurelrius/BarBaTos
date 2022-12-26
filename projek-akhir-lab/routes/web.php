@@ -2,11 +2,11 @@
 
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\EditController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
@@ -22,28 +22,32 @@ use App\Http\Controllers\RegisterController;
 */
 
 Route::get('/', [HomeController::class, 'goToHome']);
-
 Route::get('/viewAll/{category_id}', [HomeController::class, 'goToViewAll']);
 
-Route::get('/cart', function () {
-    return view('cart',[
-        "title" => "Cart",
-    ]);
+Route::middleware(['auth'])->group(function () {
+    Route::post('/logout', [ProfileController::class, 'loggingOut']);
+    Route::get('/profile', [ProfileController::class, 'goToProfile']);
+    Route::patch('/profile/edit', [ProfileController::class, 'editAccount']);
+    Route::get('/detail/{id}', [DetailController::class, 'goToEdit']);
+    Route::get('/search', [HomeController::class, 'search']);
+
+    Route::middleware(['UserOnly'])->group(function () {
+        Route::get('/cart',[CartController::class, 'goToCart']);
+    });
+
+    Route::middleware(['AdminOnly'])->group(function () {
+        Route::get('/edit', [EditController::class, 'goToEdit']);
+        Route::post('/edit/createProduct', [EditController::class, 'createProduct']);
+        Route::delete('/edit/deleteProduct', [EditController::class, 'deleteProduct']);
+        Route::delete('/edit/editProduct', [EditController::class, 'editProduct']);
+    });
 });
 
-Route::get('/profile', [ProfileController::class, 'goToProfile']);
 
-Route::get('/detail/{id}', [DetailController::class, 'goToEdit']);
+Route::middleware(['GuestOnly'])->group(function () {
+    Route::get('/login', [LoginController::class, 'goToLogin']);
+    Route::post('/login/auth', [LoginController::class, 'authenticate']);
 
-Route::get('/edit', [EditController::class, 'goToEdit']);
-Route::post('/edit/createProduct', [EditController::class, 'createProduct']);
-Route::delete('/edit/deleteProduct', [EditController::class, 'deleteProduct']);
-Route::delete('/edit/editProduct', [EditController::class, 'editProduct']);
-
-Route::get('/login', [LoginController::class, 'goToLogin']);
-Route::post('/login/auth', [LoginController::class, 'authenticate']);
-
-Route::post('/logout', [LogoutController::class, 'loggingOut']);
-
-Route::get('/register', [RegisterController::class, 'goToRegister']);
-Route::post('/register/createAccount', [RegisterController::class, 'createAccount']);
+    Route::get('/register', [RegisterController::class, 'goToRegister']);
+    Route::post('/register/createAccount', [RegisterController::class, 'createAccount']);
+});

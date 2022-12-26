@@ -3,28 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
-use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
 class EditController extends Controller
 {
     public function goToEdit(){
-        $products = Product::get();
         return view('edit', [
             "title" => "Edit",
-            "options" => [
-                "Face Mask",
-                "Headset",
-                "Keyboard",
-                "Laptop",
-                "Monitor",
-                "Mouse",
-                "Mouse Pad",
-                "Smart Watch",
-            ],
-            "products" => $products,
+            "options" => Category::get(),
+            "products" => Product::get(),
         ]);
     }
 
@@ -48,7 +39,7 @@ class EditController extends Controller
         $imgName = $img->getClientOriginalName();
         Storage::putFileAs('images', $img, $imgName);
 
-        Product::where("id", "=" , $req -> id)
+        Product::where("id", $req -> id)
         -> update([
             "name" => $req->name,
             "category_id" => $req->category,
@@ -60,7 +51,7 @@ class EditController extends Controller
     }
 
     public function deleteProduct(Request $req){
-        Product::where('id','=',$req->id)->delete();
+        Product::where('id',$req->id)->delete();
 
         return redirect('/edit');
     }

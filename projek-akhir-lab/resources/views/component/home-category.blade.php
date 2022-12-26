@@ -6,10 +6,8 @@
         </a>
     </div>
     <div class="products bg-abu d-flex w-100 gap-2 py-2 px-3 align-item-center rounded-bottom">
-        @foreach ($Products as $product)
-            @if($product->category_id == $category->id)
-                @include('component.home-card')
-            @endif
+        @foreach ($category->Product as $product)
+            @include('component.home-card')
         @endforeach
     </div>
 </div>

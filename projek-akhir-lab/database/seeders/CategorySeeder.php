@@ -18,6 +18,9 @@ class CategorySeeder extends Seeder
             'name' => "Face Mask"
         ]);
         DB::table('categories')->insert([
+            'name' => "Smart Watch"
+        ]);
+        DB::table('categories')->insert([
             'name' => "Headset"
         ]);
         DB::table('categories')->insert([
@@ -35,8 +38,6 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert([
             'name' => "Mouse Pad"
         ]);
-        DB::table('categories')->insert([
-            'name' => "Smart Watch"
-        ]);
+
     }
 }

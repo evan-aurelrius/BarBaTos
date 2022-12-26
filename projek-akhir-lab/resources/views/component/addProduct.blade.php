@@ -10,7 +10,7 @@
             <select class="border-3 border-bottom px-2 py-1 rounded" name="category" id="category">
                 <option value="none" selected disabled>Choose Category</option>
                 @foreach ($options as $option)
-                    <option value="{{ $loop->index+1 }}">{{ $option }}</option>
+                    <option value="{{ $loop->index+1 }}">{{ $option->name }}</option>
                 @endforeach
             </select>
         </div>
