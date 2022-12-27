@@ -1,11 +1,8 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
 class GuestOnly
 {
     /**
@@ -19,9 +16,7 @@ class GuestOnly
     {
         $guards = empty($guards) ? [null] : $guards;
         foreach ($guards as $guard){
-            if(Auth::guard()->check()){
-                return redirect('/');
-            }
+            if(Auth::guard()->check()){return redirect('/');}
         }
         return $next($request);
     }

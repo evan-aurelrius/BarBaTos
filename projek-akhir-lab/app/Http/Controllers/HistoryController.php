@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Cart;
 use App\Models\History;
 use App\Models\Product;
 use App\Models\History_User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
 class HistoryController extends Controller
 {
     public function goToHistory(){
@@ -25,16 +22,11 @@ class HistoryController extends Controller
             'histories' => $unique,
         ]);
     }
-
     public function purchase(){
-
         $histories = Cart::where('user_id',auth()->user()->id);
         $total = 0;
-
         $h = new History();
         $h->save();
-
-
         foreach ($histories->get() as $history){
             $hu = new History_User();
             $hu->history_id = History::latest()->first()->id;
@@ -47,13 +39,8 @@ class HistoryController extends Controller
             $total += $hu->total_price;
             dump($total);
         }
-
-        History::where('id',$h->id)->update([
-            'total' => $total
-        ]);
-
+        History::where('id',$h->id)->update(['total' => $total]);
         $histories->delete();
-
         return redirect('/history');
     }
 }

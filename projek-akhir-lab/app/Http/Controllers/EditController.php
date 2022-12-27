@@ -1,14 +1,11 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
-
 class EditController extends Controller
 {
     public function goToEdit(){
@@ -18,13 +15,10 @@ class EditController extends Controller
             "products" => Product::get()->reverse(),
         ]);
     }
-
     public function createProduct(Request $req){
         $img = $req->file('photo');
         $imgName = $img->getClientOriginalName();
         Storage::putFileAs('public/images', $img, $imgName);
-
-
         Product::insert([
             "name" => $req->name,
             "category_id" => $req->category,
@@ -34,10 +28,8 @@ class EditController extends Controller
         ]);
         return redirect('/edit');
     }
-
     public function deleteProduct(Request $req){
         Product::where('id',$req->id)->delete();
-
         return redirect('/edit');
     }
 
@@ -48,12 +40,10 @@ class EditController extends Controller
             "product" => Product::where('id',$req->id)->first(),
         ]);
     }
-
     public function updateProduct(Request $req){
         $img = $req->file('photo');
         $imgName = $img->getClientOriginalName();
         Storage::putFileAs('public/images', $img, $imgName);
-
         Product::where("id", $req -> id)
         -> update([
             "name" => $req->name,
